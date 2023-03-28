@@ -4,6 +4,7 @@ This repo documents the work done during Openroad 7nm design [contest](https://j
 - [Introduction](#introduction)
 - [Solutions tried](#solutions-tried)
   - [Use of Multi-threshold voltage cells in the design](#use-of-multi-threshold-voltage-cells-in-the-design)
+  - [Using higher layer for power ground routing during floorplan stage](#Using higher layer for power ground routing during floorplan stage)
 - [Conclusion](#conclusion)
 - [Reference](#reference)
 ## Introduction
@@ -25,7 +26,7 @@ Following are the modification in the flow that I have performed:
 
 But it comes at the cost of power. SL cells consume more than 10times the power consumed by R cells. To avoid having a high power consumption chip for high frequency operation, I am planning to use R and L cells having low  power consumption during Synthesis stage and then after synthesis at the later part replace L or R cells with SL cells on failing paths to have positive WNS. THis way the dewsign will be timing clean with less number of SL cells.
 
-### Using higher layer for power ground routing during floorplan stage. 
+### Using higher layer for power ground routing during floorplan stage
 During the routing stage of Ibex on Asap7 node the total runtime was more than 45 min where during detailed routing the tool was clkeaning DRC. 
 In global_route.tcl M2-M7 layers are being used for routing and 50% of it is being used for signal routing. 
 I see that the PDN script uses M5 and M6 layers while Asap7 node allows us to route till M9 layer, so I changed the PDN layers from M5-M6 to M7-M8. In doing so the M5 and M6 layers can now accomodate more signal routing hence the detail routing tool now runs faster due to less congestion. 
