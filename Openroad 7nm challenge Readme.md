@@ -4,7 +4,7 @@ This repo documents the work done during Openroad 7nm design [contest](https://j
 - [Introduction](#introduction)
 - [Solutions tried](#solutions-tried)
   - [Use of Multi-threshold voltage cells in the design](#use-of-multi-threshold-voltage-cells-in-the-design)
-  - [Using higher layer for power ground routing during floorplan stage](#Using higher layer for power ground routing during floorplan stage)
+  - [Using higher layer for power ground routing during floorplan stage](#Using-higher-layer-for-power-ground-routing-during-floorplan-stage)
 - [Conclusion](#conclusion)
 - [Reference](#reference)
 ## Introduction
