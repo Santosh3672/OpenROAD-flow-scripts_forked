@@ -8,7 +8,7 @@ This repo documents the work done during Openroad 7nm design [contest](https://j
 - [Conclusion](#conclusion)
 - [Reference](#reference)
 ## Introduction
-This repo is related to Openroad 7nn  [contest][(https://www.openroaddesigncontest.org/)]. Here I am targetting problem statement A of achieving best performance with zero DRC and timig violation.
+This repo is related to Openroad 7nn  [contest](https://www.openroaddesigncontest.org/). Here I am targetting problem statement A of achieving best performance with zero DRC and timig violation.
 Following are the details:
 ### Design selected: Ibex
 ### Process node: Asap7 7nm
