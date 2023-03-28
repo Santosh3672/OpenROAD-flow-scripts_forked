@@ -3,7 +3,7 @@ This repo documents the work done during Openroad 7nm design [contest](https://j
 ## Table of content
 - [Introduction](#introduction)
 - [Solutions tried](#solutions-tried)
-  - [Use of Multi-threshold voltage cells in the design](#Use of Multi-threshold voltage cells in the design:)
+  - [Use of Multi-threshold voltage cells in the design](#Use-of-Multi-threshold-voltage-cells-in-the-design:)
 - [Conclusion](#conclusion)
 - [Reference](#reference)
 ## Introduction
