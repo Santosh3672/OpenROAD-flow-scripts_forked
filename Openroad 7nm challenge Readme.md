@@ -3,8 +3,8 @@ This repo documents the work done during Openroad 7nm design [contest](https://j
 ## Table of content
 - [Introduction](#introduction)
 - [Solutions tried](#solutions-tried)
-- [Conclusion]
-- [Reference]
+- [Conclusion](#conclusion)
+- [Reference](#reference)
 ## Introduction
 This repo is related to Openroad 7nn  [contest](https://jenkins.openroad.tools/buildStatus/icon?job=OpenROAD-flow-scripts-Public%2Fpublic_tests_all%2Fmaster). Here I am targetting problem statement A of achieving best performance with zero DRC and timig violation.
 Following are the details:
@@ -30,3 +30,6 @@ In global_route.tcl M2-M7 layers are being used for routing and 50% of it is bei
 I see that the PDN script uses M5 and M6 layers while Asap7 node allows us to route till M9 layer, so I changed the PDN layers from M5-M6 to M7-M8. In doing so the M5 and M6 layers can now accomodate more signal routing hence the detail routing tool now runs faster due to less congestion. 
 With this strategy of PDN routing I allocated 10% more space for M3-M6 and now the runtime reduces to 30 minutes.
 
+## Conclusion
+
+## Reference
