@@ -3,7 +3,7 @@ This repo documents the work done during Openroad 7nm design [contest](https://j
 ## Table of content
 - [Introduction](#introduction)
 - [Solutions tried](#solutions-tried)
-  - [Use of Multi-threshold voltage cells in the design](#use-of-multi-threshold-voltage-cells-in-the-design-:)
+  - [Use of Multi-threshold voltage cells in the design](#use-of-multi-threshold-voltage-cells-in-the-design)
 - [Conclusion](#conclusion)
 - [Reference](#reference)
 ## Introduction
@@ -16,7 +16,7 @@ In this repo I will be discussing the modification in flow performed to increase
 
 ## Solutions tried
 Following are the modification in the flow that I have performed:
-### Use of Multi-threshold voltage cells in the design:
+### Use of Multi-threshold voltage cells in the design
  In Asap7 library there are three types of standard cells in terms of threshold voltage they are  
  i. R: Cells with regular Vt  
  ii. L: low Vt cells
