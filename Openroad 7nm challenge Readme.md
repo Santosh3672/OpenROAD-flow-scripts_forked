@@ -20,8 +20,8 @@ Following are the modification in the flow that I have performed:
 ### Use of Multi-threshold voltage cells in the design
  In Asap7 library there are three types of standard cells in terms of threshold voltage they are  
  i. R: Cells with regular Vt  
- ii. L: low Vt cells
- iii. SL: Super low Vt cells
+ ii. L: low Vt cells 
+ iii. SL: Super low Vt cells 
  In terms of delay R > L > SL, hence SL cells are faster than L cells which are faster than R cell. With this the delay of the datapath will be reduced allowing us to meet STA with low time period or high frequency. 
 
 But it comes at the cost of power. SL cells consume more than 10times the power consumed by R cells. To avoid having a high power consumption chip for high frequency operation, I am planning to use R and L cells having low  power consumption during Synthesis stage and then after synthesis at the later part replace L or R cells with SL cells on failing paths to have positive WNS. THis way the dewsign will be timing clean with less number of SL cells.
