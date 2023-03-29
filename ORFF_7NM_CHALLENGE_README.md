@@ -48,6 +48,8 @@ To avoid these issues I have developed an ECO engine that checks the timing repo
 <img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/ECO%20flow.drawio.png" />
 <p align='center'>Multi Vt ECO flow</p>
 </p>
+The ECO engine is a pyhon script that parses the log file of 7_1_eco.log and search for violating paths. From those paths it extracts the datapath delay, analyses and finds list of gates that can be swapped to met constraints.  <br />
+The script also incorporates those changes in the .v & .def file by updating them and dumps updated ones with a new name. Currently there are no command that swaps  cell in the openROAD tool, if that feature is available the ECO engine can dump a file containing list of changes that can be read by openROAD and write_def/ write_verilog command can be used to generate def and verilog files respectively. <br />
 
 Details of all the modification and steps performed for the ECO is mendioned below:<br />
 i. First all the R, L and SL cells are read in merged.lib file and any cell we want to block will be blocked by setting "dont_use: true" through DONT_USE variable in config file.<br />
@@ -56,7 +58,11 @@ iii. L variant of Adder, Buffer and CTS buffers are used, since they have large 
 iv. The whole flow is run till the Final stage.
 v. Then the ECO task will be run on the generated v and def file.
 
-Diagram of the whole flow.
+The proposed ECO engine requires multiple iterations to resolve all timing iterations. Since it takes the timing informations from log file as input its performance depends on how many failed paths are covered on that report and the parameters being set in the script. The iterative ECO flow is mentioned in below figure: <br />
+<p align="center">
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/ECO%20iterative%20flow.drawio.png" />
+<p align='center'>Iterative ECO flow</p>
+</p>
 
 
 
