@@ -17,14 +17,16 @@ In this repo I will be discussing the modification in flow performed to increase
 
 ## Solutions tried
 Following are the modification in the flow that I have performed:
-### Use of Multi-threshold voltage cells in the design
+### Use of Multi-Vt based ECO in the existing flow
  In Asap7 library there are three types of standard cells in terms of threshold voltage they are  
  i. R: Cells with regular Vt  <br />
  ii. L: low Vt cells <br />
  iii. SL: Super low Vt cells <br />
+ For any particular cell the LEF of its R,L and SL cells have same domension and pin shape/orientation.
  In terms of delay R > L > SL, hence SL cells are faster than L cells which are faster than R cell. With this the delay of the datapath will be reduced allowing us to meet STA with low time period or high frequency. 
 
-But it comes at the cost of power. SL cells consume more than 10times the power consumed by R cells. To avoid having a high power consumption chip for high frequency operation, I am planning to use R and L cells having low  power consumption during Synthesis stage and then after synthesis at the later part replace L or R cells with SL cells on failing paths to have positive WNS. THis way the dewsign will be timing clean with less number of SL cells. <br />
+But it comes at the cost of power. SL cells consume more than 10times the power consumed by R cells.L cells are however somewhat in between R and SL they are faster than R cells but their power consumption is not that high like a SL cell. Hence a planned usage of these L and SL cell is important else the high performance will be obtained at the cost of extremely high power consumption. <br />
+In this solution I have used R and L cells having low power consumption during Synthesis stage and then on the final DB replace L or R cells with SL or L cells on failing paths to have positive WNS. This way the design will be timing clean with less number of SL cells. <br />
 The timing report present in the floorplan stage is very pessimistic as they have very large negative slack, the WNS and TNS of various stage of Ibex implementation at 1400ps clock period is tabulated below. <br />
 | **Stage** | **WNS(ps)** | **TNS(ps)** |
 | --------- | ----------- | ----------- |
@@ -34,6 +36,17 @@ The timing report present in the floorplan stage is very pessimistic as they hav
 | Route     | 116.79      | 3888.48     |
 | Final     | 106.54      | 1160.48     |
 
+From the above table following observation can be made:
+i. In floorplan we are not reading DEF file hence the timing is determined from knowledge of RTL which is highly pessimistic.
+ii. After placement without clock tree defined the WNS is least due to absence of skew.
+iii. After CTS the timing is now more realistic.
+
+If we try to synthesize a high frequency design by allowing faster(standard cell) standard cell, it will consider the pessimistic timing report as we have seen in floorplan and try to over-optimize the design. This will cause the design to have very high leakage power. <br />
+But if we are not allowing 
+
+Details of all the modification and steps performed for the ECO is mendioned below:
+i. First all the R, L and SL cells are read in merged.lib file and any cell we want to block will be blocked by setting "dont_use: true" through DONT_USE variable in config file.
+ii. For higher frequency design R and L cells are enabled, i.e. apart from default list of dont_use keyword an additional *_SL is added blocking all SL cells.
 
 ### Using higher layer for PDN stripes to have better signal routing
 For ASAP7 there are 9 metal layers and signal routing is enabled on M2-M7. The PDN is generated for M1, M2 and M5-M6. M1 and M2 are rails which are used to power the VDD and VSS pins of std cells. While M5 and M6 are the stripes at higher layer used to improve rebustness of grid to have better IR/EM profile. <br />
