@@ -56,8 +56,14 @@ For example if we set adjustment for M2 as 0.5 it will reduce the routing resour
 <p float="left">
 <img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/default_fastroute_script.JPG" alt="MarineGEO circle logo" style="height: 120px; width:500px;"/>
   <img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/updated_fastroute_script.JPG" alt="MarineGEO circle logo" style="height: 120px; width:500px;"/>
-  <p align="center">Fig.1: a. Default fastroute script when FASTROUTE_TCL variable is not defined b. Updated fastroute.tcl script <p />
+  <p align="center">Fig.3: a. Default fastroute script when FASTROUTE_TCL variable is not defined b. Updated fastroute.tcl script <p />
 </p>
+
+<p align="center">
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/0th_iter_new_PDN_with_fastroute.JPG" />
+<p align='center'>Fig4: DRC count and layer wise usage with updated PDN and fastroute script</p>
+</p>
+
 
 ## Conclusion
 
