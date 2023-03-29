@@ -53,6 +53,12 @@ To avoid congestion there is a command set_global_routing_layer_adjustment which
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **set_global_routing_layer_adjustment layer adjustment** <br />
 For example if we set adjustment for M2 as 0.5 it will reduce the routing resources of M2 layer by 50% now the tool will try to do routing on other layer. Default script blocks 50% of all signal routing. I added a fastroute.tcl script which blocks more routing resources for lower layer and less for higher layer thereby spreading routing among all layers.
 
+<p float="left">
+<img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/default_fastroute_script.JPG" alt="MarineGEO circle logo" style="height: 300px; width:500px;"/>
+  <img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/updated_fastroute_script.JPG" alt="MarineGEO circle logo" style="height: 300px; width:500px;"/>
+  <p align="center">Fig.1: a. Default fastroute script when FASTROUTE_TCL variable is not defined b. Updated fastroute.tcl script <p />
+</p>
+
 ## Conclusion
 
 
