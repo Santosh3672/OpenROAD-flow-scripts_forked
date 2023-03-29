@@ -26,11 +26,20 @@ Following are the modification in the flow that I have performed:
 
 But it comes at the cost of power. SL cells consume more than 10times the power consumed by R cells. To avoid having a high power consumption chip for high frequency operation, I am planning to use R and L cells having low  power consumption during Synthesis stage and then after synthesis at the later part replace L or R cells with SL cells on failing paths to have positive WNS. THis way the dewsign will be timing clean with less number of SL cells.
 
-### Using higher layer for power ground routing during floorplan stage
-During the routing stage of Ibex on Asap7 node the total runtime was more than 45 min where during detailed routing the tool was clkeaning DRC. 
-In global_route.tcl M2-M7 layers are being used for routing and 50% of it is being used for signal routing. 
-I see that the PDN script uses M5 and M6 layers while Asap7 node allows us to route till M9 layer, so I changed the PDN layers from M5-M6 to M7-M8. In doing so the M5 and M6 layers can now accomodate more signal routing hence the detail routing tool now runs faster due to less congestion. 
-With this strategy of PDN routing I allocated 10% more space for M3-M6 and now the runtime reduces to 30 minutes.
+### Using higher layer for PDN stripes to have better signal routing
+For ASAP7 there are 9 metal layers and signal routing is enabled on M2-M7. The PDN is generated for M1, M2 and M5-M6. M1 and M2 are rails which are used to power the VDD and VSS pins of std cells. While M5 and M6 are the stripes at higher layer used to improve rebustness of grid to have better IR/EM profile.
+Problem faced: For large design like Ibex the detail routing had longest runtime among all other tasks.
+During detail routing the tool will do routing in the 0th and measure the DRCs then it will clean the DRCs in next iterations. 
+Till all DRCs are cleaned the iterations will continue.
+So the runtime of detail routing depends upon two factors: Size of the design and Initial DRC present in the design. 
+
+Solution tried: In this solution I tried to reduce the initial DRCs in the design by moving the PDN stripes to higher layer M7-M8 from existing M5-M6 layer, since most of the signal routing is done on lower layers freeing M5 and M6 layer for signal layer reduces congestion by a great extent. 
+
+Note: Since M2 is horizontal layer the stripe above it has to be vertical layer thats why I had to choose M7-M8, since M7 is vertical.
+
+
+
+
 
 ## Conclusion
 
