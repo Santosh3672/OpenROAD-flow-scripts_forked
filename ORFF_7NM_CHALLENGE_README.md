@@ -42,6 +42,12 @@ ii. After placement without clock tree defined the WNS is least due to absence o
 iii. After CTS the timing is now more realistic.<br />
 
 If we try to synthesize a high frequency design by allowing faster(standard cell) standard cell, it will consider the pessimistic timing report as we have seen in floorplan and try to over-optimize the design. This will cause the design to have very high leakage power. <br />
+To avoid these issues I have developed an ECO engine that checks the timing report from logs and based on that it will swap slow cells on timing critical paths with fast L or SL cells to make them timing clean. The usage of the engine on OpenROAD flow is shown in figure below.
+
+<p align="center">
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/ECO%20flow.drawio.png" />
+<p align='center'>Multi Vt ECO flow</p>
+</p>
 
 Details of all the modification and steps performed for the ECO is mendioned below:<br />
 i. First all the R, L and SL cells are read in merged.lib file and any cell we want to block will be blocked by setting "dont_use: true" through DONT_USE variable in config file.<br />
