@@ -44,8 +44,10 @@ Note: Since M2 is horizontal layer the stripe above it has to be vertical layer 
 </p>
 Also I observed that lower metal layers(M2-M4) had more signal routes than higher layer(M5-M7).
 
+<p align="left">
 <img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/0th_iter_old_PDN.JPG" />
 <p align='center'>Fig2: DRC count and layer wise usage with default flow </p>
+</p>
 To avoid congestion there is a command set_global_routing_layer_adjustment which sets routing resources adjustment in signal routing.
 ```console
 set_global_routing_layer_adjustment layer adjustment
