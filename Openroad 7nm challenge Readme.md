@@ -48,7 +48,7 @@ Also I observed that lower metal layers(M2-M4) had more signal routes than highe
 <img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/0th_iter_old_PDN.JPG" />
 <p align='center'>Fig2: DRC count and layer wise usage with default flow </p>
 </p>
-To avoid congestion there is a command set_global_routing_layer_adjustment which sets routing resources adjustment in signal routing.
+To avoid congestion there is a command set_global_routing_layer_adjustment which sets routing resources adjustment in signal routing.<br />
 ```console
 set_global_routing_layer_adjustment layer adjustment
 ```
