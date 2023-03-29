@@ -42,7 +42,7 @@ Note: Since M2 is horizontal layer the stripe above it has to be vertical layer 
   <img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/PDN_script_Updated.JPG" alt="MarineGEO circle logo" style="height: 300px; width:500px;"/>
   <p align="center">Fig.1: a. Default PDN script b. Updated PDN script <p />
 </p>
-Also I observed that lower metal layers(M2-M4) had more signal routes than higher layer(M5-M7).
+Also I observed that lower metal layers(M2-M4) had more signal routes than higher layer(M5-M7)(Fig1).<br />
 
 <p align="center">
 <img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/0th_iter_old_PDN.JPG" />
