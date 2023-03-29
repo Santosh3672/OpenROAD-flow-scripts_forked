@@ -68,7 +68,10 @@ Comparing it with the default flow there are less DRC after 0th iteration (16348
 
 <p align="center">
 <img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/total_runtime_old_PDN.JPG" />
+  </p>
 <p align='center'>Fig5. a: Total runtime with default script</p>
+
+<p align="center">
 <img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/total_runtime_new_PDN_with_fastroute_1.JPG" />
 <p align='center'>Fig5. b: Total runtime with updated PDN and fastroute script</p>
 </p>
