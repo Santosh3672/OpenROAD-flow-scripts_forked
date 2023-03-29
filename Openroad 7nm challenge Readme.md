@@ -39,13 +39,10 @@ Note: Since M2 is horizontal layer the stripe above it has to be vertical layer 
 
 <p float="left">
 <img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/PDN_script_default.JPG" alt="MarineGEO circle logo" style="height: 400px; width:500px;"/>
-  <img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/PDN_script_default.JPG" alt="MarineGEO circle logo" style="height: 400px; width:500px;"/>
-  Fig.1: Default PDN script <br />
+  <img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/PDN_script_Updated.JPG" alt="MarineGEO circle logo" style="height: 400px; width:500px;"/>
+  Fig.1: a. Default PDN script b. Updated PDN script <br />
 </p>
-<p align="right">
-<img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/PDN_script_default.JPG" alt="MarineGEO circle logo" style="height: 400px; width:500px;"/><br />
-  Fig.1: Default PDN script <br />
-</p>
+
 ## Conclusion
 
 
