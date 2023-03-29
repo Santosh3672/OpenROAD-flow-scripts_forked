@@ -76,6 +76,7 @@ Comparing it with the default flow there are less DRC after 0th iteration (16348
 <p align='center'>Fig5. b: Total runtime with updated PDN and fastroute script</p>
 </p>
 
+In overall the runtime reduced from 20min 25sec(1225sec) to 16min 48sec(1008sec) a reduction of ~ 18% runtime is achieved by reducing initial DRC of detail route stage.
 ## Conclusion
 
 
