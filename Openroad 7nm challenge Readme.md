@@ -42,6 +42,14 @@ Note: Since M2 is horizontal layer the stripe above it has to be vertical layer 
   <img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/PDN_script_Updated.JPG" alt="MarineGEO circle logo" style="height: 300px; width:500px;"/>
   <p align="center">Fig.1: a. Default PDN script b. Updated PDN script <p />
 </p>
+Also I observed that lower metal layers(M2-M4) had more signal routes than higher layer(M5-M7).
+![0th iteration default flow](https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/0th_iter_old_PDN.JPG)
+<p align='center'>Fig2: DRC count and layer wise usage with default flow </p>
+To avoid congestion there is a command set_global_routing_layer_adjustment which sets routing resources adjustment in signal routing.
+```console
+set_global_routing_layer_adjustment layer adjustment
+```
+For example if we set adjustment for M2 as 0.5 it will reduce the routing resources of M2 layer by 50% now the tool will try to do routing on other layer. Default script blocks 50% of all signal routing. I added a fastroute.tcl script which blocks more routing resources for lower layer and less for higher layer thereby spreading routing among all layers.
 
 ## Conclusion
 
