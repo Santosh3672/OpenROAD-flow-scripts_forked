@@ -49,9 +49,7 @@ Also I observed that lower metal layers(M2-M4) had more signal routes than highe
 <p align='center'>Fig2: DRC count and layer wise usage with default flow </p>
 </p>
 To avoid congestion there is a command set_global_routing_layer_adjustment which sets routing resources adjustment in signal routing.<br />
-```js
-set_global_routing_layer_adjustment layer adjustment
-```
+==set_global_routing_layer_adjustment layer adjustment==
 For example if we set adjustment for M2 as 0.5 it will reduce the routing resources of M2 layer by 50% now the tool will try to do routing on other layer. Default script blocks 50% of all signal routing. I added a fastroute.tcl script which blocks more routing resources for lower layer and less for higher layer thereby spreading routing among all layers.
 
 ## Conclusion
