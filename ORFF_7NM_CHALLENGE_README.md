@@ -52,7 +52,8 @@ To avoid congestion there is a command set_global_routing_layer_adjustment which
 <span style="background-color: #000000">set_global_routing_layer_adjustment layer adjustment</span> <br />
 	```console
 	Floorplan.tcl << config.tcl << {pdk name}_config.tcl
-	``` \
+	``` 
+	\
 For example if we set adjustment for M2 as 0.5 it will reduce the routing resources of M2 layer by 50% now the tool will try to do routing on other layer. Default script blocks 50% of all signal routing. I added a fastroute.tcl script which blocks more routing resources for lower layer and less for higher layer thereby spreading routing among all layers.
 
 ## Conclusion
