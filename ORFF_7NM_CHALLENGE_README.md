@@ -60,10 +60,11 @@ For example if we set adjustment for M2 as 0.5 it will reduce the routing resour
 </p>
 
 <p align="center">
-<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/0th_iter_new_PDN_with_fastroute.JPG" />
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/0th_iter_new_PDN_with_fastroute_1.JPG" />
 <p align='center'>Fig4: DRC count and layer wise usage with updated PDN and fastroute script</p>
 </p>
 
+Comparing it with the default flow there are less DRC after 0th iteration (16348 to 15387) and runtime of 0th iteration reduced from 4min 47 sec to 3min 27sec. 
 
 ## Conclusion
 
