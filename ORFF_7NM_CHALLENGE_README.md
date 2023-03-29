@@ -24,7 +24,16 @@ Following are the modification in the flow that I have performed:
  iii. SL: Super low Vt cells <br />
  In terms of delay R > L > SL, hence SL cells are faster than L cells which are faster than R cell. With this the delay of the datapath will be reduced allowing us to meet STA with low time period or high frequency. 
 
-But it comes at the cost of power. SL cells consume more than 10times the power consumed by R cells. To avoid having a high power consumption chip for high frequency operation, I am planning to use R and L cells having low  power consumption during Synthesis stage and then after synthesis at the later part replace L or R cells with SL cells on failing paths to have positive WNS. THis way the dewsign will be timing clean with less number of SL cells.
+But it comes at the cost of power. SL cells consume more than 10times the power consumed by R cells. To avoid having a high power consumption chip for high frequency operation, I am planning to use R and L cells having low  power consumption during Synthesis stage and then after synthesis at the later part replace L or R cells with SL cells on failing paths to have positive WNS. THis way the dewsign will be timing clean with less number of SL cells. <br />
+The timing report present in the floorplan stage is very pessimistic as they have very large negative slack, the WNS and TNS of various stage of Ibex implementation at 1400ps clock period is tabulated below. <br />
+| **Stage** | **WNS(ps)** | **TNS(ps)** |
+| --------- | ----------- | ----------- |
+| Floorplan | 2648.74     | 4390727.5   |
+| Place     | 15.69       | 325.24      |
+| cts       | 116.79      | 3888.48     |
+| Route     | 116.79      | 3888.48     |
+| Final     | 106.54      | 1160.48     |
+
 
 ### Using higher layer for PDN stripes to have better signal routing
 For ASAP7 there are 9 metal layers and signal routing is enabled on M2-M7. The PDN is generated for M1, M2 and M5-M6. M1 and M2 are rails which are used to power the VDD and VSS pins of std cells. While M5 and M6 are the stripes at higher layer used to improve rebustness of grid to have better IR/EM profile. <br />
