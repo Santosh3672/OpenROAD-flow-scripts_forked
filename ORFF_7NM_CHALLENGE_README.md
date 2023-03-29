@@ -36,17 +36,17 @@ The timing report present in the floorplan stage is very pessimistic as they hav
 | Route     | 116.79      | 3888.48     |
 | Final     | 106.54      | 1160.48     |
 
-From the above table following observation can be made:
-i. In floorplan we are not reading DEF file hence the timing is determined from knowledge of RTL which is highly pessimistic.
-ii. After placement without clock tree defined the WNS is least due to absence of skew.
-iii. After CTS the timing is now more realistic.
+From the above table following observation can be made: <br />
+i. In floorplan we are not reading DEF file hence the timing is determined from knowledge of RTL which is highly pessimistic. <br />
+ii. After placement without clock tree defined the WNS is least due to absence of skew.<br />
+iii. After CTS the timing is now more realistic.<br />
 
 If we try to synthesize a high frequency design by allowing faster(standard cell) standard cell, it will consider the pessimistic timing report as we have seen in floorplan and try to over-optimize the design. This will cause the design to have very high leakage power. <br />
-But if we are not allowing 
 
-Details of all the modification and steps performed for the ECO is mendioned below:
-i. First all the R, L and SL cells are read in merged.lib file and any cell we want to block will be blocked by setting "dont_use: true" through DONT_USE variable in config file.
-ii. For higher frequency design R and L cells are enabled, i.e. apart from default list of dont_use keyword an additional *_SL is added blocking all SL cells.
+Details of all the modification and steps performed for the ECO is mendioned below:<br />
+i. First all the R, L and SL cells are read in merged.lib file and any cell we want to block will be blocked by setting "dont_use: true" through DONT_USE variable in config file.<br />
+ii. For higher frequency design R and L cells are enabled, i.e. apart from default list of dont_use keyword an additional &ast;_SL is added blocking all SL cells.<br />
+iii.asd
 
 ### Using higher layer for PDN stripes to have better signal routing
 For ASAP7 there are 9 metal layers and signal routing is enabled on M2-M7. The PDN is generated for M1, M2 and M5-M6. M1 and M2 are rails which are used to power the VDD and VSS pins of std cells. While M5 and M6 are the stripes at higher layer used to improve rebustness of grid to have better IR/EM profile. <br />
