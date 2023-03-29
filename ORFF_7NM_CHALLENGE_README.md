@@ -17,7 +17,7 @@ In this repo I will be discussing the modification in flow performed to increase
 
 ## Solutions tried
 Following are the modification in the flow that I have performed:
-### Use of Multi-Vt based ECO in the existing flow
+### Use of Multi-Vt based ECO in the existing flow for higher performance
  In Asap7 library there are three types of standard cells in terms of threshold voltage they are  
  i. R: Cells with regular Vt  <br />
  ii. L: low Vt cells <br />
@@ -45,8 +45,14 @@ If we try to synthesize a high frequency design by allowing faster(standard cell
 
 Details of all the modification and steps performed for the ECO is mendioned below:<br />
 i. First all the R, L and SL cells are read in merged.lib file and any cell we want to block will be blocked by setting "dont_use: true" through DONT_USE variable in config file.<br />
-ii. For higher frequency design R and L cells are enabled, i.e. apart from default list of dont_use keyword an additional &ast;_SL is added blocking all SL cells.<br />
-iii.asd
+ii. For higher frequency design R and L cells are enabled, i.e. SL cells are blocked.<br />
+iii. L variant of Adder, Buffer and CTS buffers are used, since they have large delay.
+iv. The whole flow is run till the Final stage.
+v. Then the ECO task will be run on the generated v and def file.
+
+Diagram of the whole flow.
+
+
 
 ### Using higher layer for PDN stripes to have better signal routing
 For ASAP7 there are 9 metal layers and signal routing is enabled on M2-M7. The PDN is generated for M1, M2 and M5-M6. M1 and M2 are rails which are used to power the VDD and VSS pins of std cells. While M5 and M6 are the stripes at higher layer used to improve rebustness of grid to have better IR/EM profile. <br />
