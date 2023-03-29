@@ -67,12 +67,12 @@ For example if we set adjustment for M2 as 0.5 it will reduce the routing resour
 Comparing it with the default flow there are less DRC after 0th iteration (16348 to 15387) and runtime of 0th iteration reduced from 4min 47 sec to 3min 27sec. 
 
 <p align="center">
-<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/total_runtime_old_PDN.JPG" />
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/total_runtime_old_PDN_1.JPG" />
   </p>
 <p align='center'>Fig5. a: Total runtime with default script</p>
 
 <p align="center">
-<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/total_runtime_new_PDN_with_fastroute_1.JPG" />
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/PDN/total_runtime_new_PDN_with_fastroute_2.JPG" />
 <p align='center'>Fig5. b: Total runtime with updated PDN and fastroute script</p>
 </p>
 
