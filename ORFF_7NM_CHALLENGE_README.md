@@ -100,19 +100,50 @@ Experiment 1:
 Variants of Std cell enabled for Yosys: RVT and LVT
 Variants of Adder and DFF used: LVT
 Pre ECO:
-  Power: 1.65e-2
-  WNS: -130.43
-  TNS: -4415.77
-  Design area: 2483u^2
+  Power: 1.67e-2
+  WNS: -115.39
+  TNS: -1718.13
+  Design area: 2479u^2
  After ECO:
- Number of ECO iterations: 5
+ Number of ECO iterations: 6
       Power(10^-2W), WNS(ps), TNS(ps)
-Iter1: 1.66, 38.63, 337.96
-Iter2: 1.66, 29.64, 227.42
-Iter3: 1.66,  7.86, 15.6
-Iter4: 1.66,  0.42, 0.42
-Iter5: 1.66,     0, 0
+Iter1: 1.68, 49.84, 275.17
+Iter2: 1.68,  18.72,  76.01
+Iter3: 1.68,  15.00,  41.01
+Iter4: 1.68,     5.24,   6.58
+Iter5: 1.68, 2.18, 2.18
+Iter6: 1.68, 0, 0
   
+Experiment 2:
+Variants of Std cell enabled for Yosys: RVT, LVT and SLVT
+Variants of Adder and DFF used: LVT
+Pre ECO:
+  Power 1.78e-2
+  WNS: 80.25
+  TNS: 1365.28
+  Design area: 2478u^2
+  After ECO:
+  Number of ECO iterations: 3
+      Power(10^-2W), WNS(ps), TNS(ps)
+Iter1: 1.78, 10.12,  13.55
+Iter2: 1.78,  0.96,  0.96
+Iter3: 1.65,  8.32,  18.71
+Iter4: 1.65,     0,      0
+
+Experiment 3:
+Variant of Std cells enabled for Yosys: RVT
+Variant of adder and DFF used: RVT
+Pre ECO:
+  Power 1.78e-2
+  WNS: 80.25
+  TNS: 1365.28
+  Design area: 2478u^2
+  Number of ECO iterations: 3
+      Power(10^-2W), WNS(ps), TNS(ps)
+Iter1: 1.78, 10.12,  13.55
+Iter2: 1.78,  0.96,  0.96
+Iter3: 1.65,  8.32,  18.71
+Iter4: 1.65,     0,      0
 ### Using higher layer for PDN stripes to have better signal routing
 For ASAP7 there are 9 metal layers and signal routing is enabled on M2-M7. The PDN is generated for M1, M2 and M5-M6. M1 and M2 are rails which are used to power the VDD and VSS pins of std cells. While M5 and M6 are the stripes at higher layer used to improve rebustness of grid to have better IR/EM profile. <br />
 Problem faced: For large design like Ibex the detail routing had longest runtime among all other tasks.
