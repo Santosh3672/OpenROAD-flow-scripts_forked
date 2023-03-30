@@ -49,22 +49,47 @@ To avoid these issues I have developed an ECO engine that checks the timing repo
 <img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/ECO%20flow.drawio.png" />
 <p align='center'>Multi Vt ECO flow</p>
 </p>
-The ECO engine is a pyhon script that parses the log file of 7_1_eco.log and search for violating paths. From those paths it extracts the datapath delay, analyses and finds list of gates that can be swapped to met constraints.  <br />
+The ECO engine is pyhon based, first it parses the log file of 7_1_eco.log and search for violating paths. From those paths it extracts the datapath delay, analyses and finds list of gates that can be swapped to met constraints.  <br />
 The script also incorporates those changes in the .v & .def file by updating them and dumps updated ones with a new name. Currently there are no command that swaps  cell in the openROAD tool, if that feature is available the ECO engine can dump a file containing list of changes that can be read by openROAD and write_def/ write_verilog command can be used to generate def and verilog files respectively. <br />
 
 Details of all the modification and steps performed for the ECO is mendioned below:<br />
-i. First all the R, L and SL cells are read in merged.lib file and any cell we want to block will be blocked by setting "dont_use: true" through DONT_USE variable in config file.<br />
-ii. For higher frequency design R and L cells are enabled, i.e. SL cells are blocked.<br />
-iii. L variant of Adder, Buffer and CTS buffers are used, since they have large delay.
-iv. The whole flow is run till the Final stage.
-v. Then the ECO task will be run on the generated v and def file.
+i. First all the Vt variant cells (R, L and SL) are read in merged.lib file and any cell not required(say L or SL) can be blocked by setting "dont_use: true" through DONT_USE variable in config file.<br />
+ii. For higher frequency design R and L cells are enabled, but SL cells are blocked for synthesis.<br />
+iii. L variant of Adder, Buffer and CTS buffers are used, since they have large delay. <br />
+<p align="center">
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Design_config.JPG" />
+<p align='center'>Design config snippet</p>
+</p>
+Note: The cells that we enable for synthesis and additional cells that we unblock for ECO will have a big impact on PPA of our design. In our case if we had disabled most of the L cells for ECO and enable them during the ECO then the power consumption of the chip would be low but delay would be higher. It would require more effort on ECO stage <br /> 
+iv. The whole flow is run till the Final stage. <br />
+v. Then a a new merged_eco.lib will be generated that removes the "dont_use: true" on the cells we want to enable for ECO(set through ENABLE_ECO variable). <br />
+vi. It si followed by the ECO task which has three parts.
+    a. 7_1_eco task: First the verilog file from 6_final task and regular merged.lib file are read using load.tcl file, then DEF and SPEF file are read to generate physical and parasitic information. Now failing paths are reported using report_checks command, which are dumped on log file.
+    b. ECO_engine: Then the ECO engine parses through the log file of 7_1_eco.log file and extracts the timing reports. Based on this reports it will analyze and look for cells that can be swapped to improve timing. Then it reads the existing .v and def from 6_final task, swaps those cells and update them in a new file 7_eco.v/def.
+    c. 7_2_eco task: It reads the ECO generated verilog file and merged_eco.lib through load.tcl. Then new def file and 6_final.spef are read(since routing are not affected, swapped cells are exact replica as we are only swapping same cells with different Vt). With all the collaterals loaded timings and power informations are reported to check effectiveness of ECO and whether additional ECO iterations are required.
+ <p align="center">
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/ECO%20iterative%20flow.drawio.png" />
+<p align='center'>Iterative ECO flow</p>
+</p>   
 
 The proposed ECO engine requires multiple iterations to resolve all timing iterations. Since it takes the timing informations from log file as input its performance depends on how many failed paths are covered on that report and the parameters being set in the script. The iterative ECO flow is mentioned in below figure: <br />
 <p align="center">
-<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/ECO%20iterative%20flow.drawio.png" />
-<p align='center'>Iterative ECO flow</p>
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/ECO_task_makefile.JPG" />
+<p align='center'>Snippet of ECO makefile command</p>
 </p>
+NOTE: For automating the task the newly generated .v and .def files are renamed to 6_final.v and .def (using make save_eco) respectively since the ECO task takes input from 6_final. To avoid loosing original 6_final files user can do 'make copy_final'.
+Commands required to do a new iteration of ECO:
+\# use this to save 6_final.v nad def file.
+copy_final
+save_eco
+clean_eco
+eco
+Last 3 commands are clubbed in a single command "eco_iter".
 
+<p align="center">
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/ECO_iter_makefile.JPG" />
+<p align='center'>Snippet of makefile command for ECO iterations</p>
+</p>
 
 
 ### Using higher layer for PDN stripes to have better signal routing
