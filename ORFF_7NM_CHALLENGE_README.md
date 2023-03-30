@@ -119,17 +119,17 @@ Variants of Std cell enabled for Yosys: RVT, LVT and SLVT
 Variants of Adder and DFF used: LVT
 Pre ECO:
   Power 1.82e-2
-  WNS: 80.25
-  TNS: 1365.28
-  Design area: 2478u^2
+  WNS: 149.21
+  TNS: 1752.8
+  Design area: 2479u^2
   After ECO:
-  Number of ECO iterations: Didnot converge
+  Number of ECO iterations: Did not converge
       Power(10^-2W), WNS(ps), TNS(ps)
-Iter1: 1.82, 10.12,  13.55
-Iter2: 1.82,  0.96,  0.96
-Iter3: 1.82,  8.32,  18.71
-Iter4: 1.82,     0,      0
-
+Iter1: 1.82, 76.09,  311.75
+Iter2: 1.82,  40.78, 103.39
+Iter3: 1.82,  30.47,  41.06
+Iter4: 1.82,  29.82, 38.17
+Iter5: 1.82,  29.84, 38.25
 Experiment 3:
 Variants of Std cell enabled for Yosys: RVT, LVT and SLVT
 Variants of Adder and DFF used: RVT
