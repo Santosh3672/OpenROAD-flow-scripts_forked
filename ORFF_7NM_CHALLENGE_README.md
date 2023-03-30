@@ -19,9 +19,9 @@ In this repo I will be discussing the modification in flow performed to increase
 Following are the modification in the flow that I have performed:
 ### Use of Multi-Vt based ECO in the existing flow for higher performance
  In Asap7 library there are three types of standard cells in terms of threshold voltage they are  
- i. R: Cells with regular Vt  <br />
- ii. L: low Vt cells <br />
- iii. SL: Super low Vt cells <br />
+  + i. R: Cells with regular Vt  <br />
+  + ii. L: low Vt cells <br />
+  + iii. SL: Super low Vt cells <br />
  For any particular cell the LEF of its R,L and SL cells have same domension and pin shape/orientation.
  In terms of delay R > L > SL, hence SL cells are faster than L cells which are faster than R cell. With this the delay of the datapath will be reduced allowing us to meet STA with low time period or high frequency. 
 
