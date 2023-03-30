@@ -29,7 +29,7 @@ But it comes at the cost of power. SL cells consume more than 10times the power 
 In this solution I have used R and L cells having low power consumption during Synthesis stage and then on the final DB replace L or R cells with SL or L cells on failing paths to have positive WNS. This way the design will be timing clean with less number of SL cells. <br />
 The timing report present in the floorplan stage is very pessimistic as they have very large negative slack, the WNS and TNS of various stage of Ibex implementation at 1400ps clock period is tabulated below. <br />
 
-<p align="center">
+<center>
 | **Stage** | **WNS(ps)** | **TNS(ps)** |
 | --------- | ----------- | ----------- |
 | Floorplan | 2648.74     | 4390727.5   |
@@ -37,7 +37,7 @@ The timing report present in the floorplan stage is very pessimistic as they hav
 | cts       | 116.79      | 3888.48     |
 | Route     | 116.79      | 3888.48     |
 | Final     | 106.54      | 1160.48     |
-</p>
+</center>
 
 From the above table following observation can be made: <br />
 i. In floorplan we are not reading DEF file hence the timing is determined from knowledge of RTL which is highly pessimistic. <br />
