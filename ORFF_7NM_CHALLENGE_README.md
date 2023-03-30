@@ -80,7 +80,7 @@ The proposed ECO engine requires multiple iterations to resolve all timing itera
 NOTE: For automating the task the newly generated .v and .def files are renamed to 6_final.v and .def (using make save_eco) respectively since the ECO task takes input from 6_final. To avoid loosing original 6_final files user can do 'make copy_final'. <br />
 Commands required to do a new iteration of ECO:<br />
 #use this to save 6_final.v nad def file.<br />
-```
+```console
 copy_final <br />
 save_eco <br />
 clean_eco <br />
