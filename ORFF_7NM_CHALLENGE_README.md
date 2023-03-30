@@ -93,7 +93,26 @@ Last 3 commands are clubbed in a single command "eco_iter".<br />
 <p align='center'>Snippet of makefile command for ECO iterations</p>
 </p>
 
-
+#### Result with ECO:
+Design implemented: Ibex at Asap7node
+Clock period: 1400ps (714.286 MHz)
+Experiment 1:
+Variants of Std cell enabled for Yosys: RVT and LVT
+Variants of Adder and DFF used: LVT
+Pre ECO:
+  Power: 1.65e-2
+  WNS: -130.43
+  TNS: -4415.77
+  Design area: 2483u^2
+ After ECO:
+ Number of ECO iterations: 5
+      Power(10^-2W), WNS(ps), TNS(ps)
+Iter1: 1.66, 38.63, 337.96
+Iter2: 1.66, 29.64, 227.42
+Iter3: 1.66,  7.86, 15.6
+Iter4: 1.66,  0.42, 0.42
+Iter5: 1.66,     0, 0
+  
 ### Using higher layer for PDN stripes to have better signal routing
 For ASAP7 there are 9 metal layers and signal routing is enabled on M2-M7. The PDN is generated for M1, M2 and M5-M6. M1 and M2 are rails which are used to power the VDD and VSS pins of std cells. While M5 and M6 are the stripes at higher layer used to improve rebustness of grid to have better IR/EM profile. <br />
 Problem faced: For large design like Ibex the detail routing had longest runtime among all other tasks.
