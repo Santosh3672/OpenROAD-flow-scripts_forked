@@ -335,7 +335,12 @@ Comparing it with the default flow there are less DRC after 0th iteration (16348
 
 In overall the runtime reduced from 20min 25sec(1225sec) to 16min 48sec(1008sec) a reduction of ~ 18% runtime is achieved by reducing initial DRC of detail route stage.
 ## Conclusion
+We discussed about the OpenROAD flow, different VT variants of standard cells available for Asap7 node. Then the proposed ECO engine was introduced which works on post routed design and swaps the existing cells with its faster variants. <br />
+We also discussed about effect of using various combinations of R,L and SL cells during synthesis stage and then concluded that it is better to use R cells during synthesis and restrict the use of L and SL cells for ECO only. For which we need to include their library in the config file and use dont_use attribute on blocked cells. <br />
+With this approach the proposed ECO engine works efficiently and it is able to make our design timing clean at 1200ps time period while the default flow was able to do it at 1760ps, a frequency improvement of 60.8% is achieved while power number also increased. In terms of normalized PPA, the ECO engine increased frequency by 14.3%.<br />
 
+In terms of PDN
 
 ## Reference
-
+1. Link to the repo with all scripts to run ECO and PDN/routing scripts: https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/tree/7nmcontest
+2. Link to OpenROAD page: https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts
