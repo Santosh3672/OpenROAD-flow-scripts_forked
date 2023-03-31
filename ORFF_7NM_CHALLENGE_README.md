@@ -42,6 +42,10 @@ i. In floorplan we are not reading DEF file hence the timing is determined from 
 ii. After placement without clock tree defined the WNS is least due to absence of skew.<br />
 iii. After CTS the timing is now more realistic.<br />
 
+There is a command called repair_design which inserts buffers on nets to repair max slew, max capacitance and max fanout violations and on long wire to reduce delay. But it has to be performed before placement where the timing is not accurate. Due to this reason we see timing violations post routing. We can't do repair_design after routing stage as the new cells cannot be placed or routed. <br />
+
+This is where the proposed solution of my ECO engine comes. It swaps the existing placed and routed cells with its faster variant(L or SL) having same dimension and pin layout. Since ECO is performed at the last stage of the design the turnaround time is also less. The solution automatic and requires no human intervention apart from running new iteration through make command. It aligns with the aim of OpenROAD project.<br />
+
 If we try to synthesize a high frequency design by allowing faster(standard cell) standard cell, it will consider the pessimistic timing report as we have seen in floorplan and try to over-optimize the design. This will cause the design to have very high leakage power. <br />
 To avoid these issues I have developed an ECO engine that checks the timing report from logs and based on that it will swap slow cells on timing critical paths with fast L or SL cells to make them timing clean. The usage of the engine on OpenROAD flow is shown in figure below.<br />
 
