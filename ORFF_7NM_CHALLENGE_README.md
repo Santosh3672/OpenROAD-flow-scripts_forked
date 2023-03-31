@@ -94,70 +94,72 @@ Last 3 commands are clubbed in a single command "eco_iter".<br />
 </p>
 
 #### Result with ECO:
-Design implemented: Ibex at Asap7node
-Clock period: 1400ps (714.286 MHz)
-Experiment 1:
-Variants of Std cell enabled for Yosys: RVT and LVT
-Variants of Adder and DFF used: LVT
-Pre ECO:
-  Power: 1.67e-2
-  WNS: -115.39
-  TNS: -1718.13
-  Design area: 2479u^2
- After ECO:
- Number of ECO iterations: 6
-      Power(10^-2W), WNS(ps), TNS(ps)
-Iter1: 1.68, 49.84, 275.17
-Iter2: 1.68,  18.72,  76.01
-Iter3: 1.68,  15.00,  41.01
-Iter4: 1.68,     5.24,   6.58
-Iter5: 1.68, 2.18, 2.18
-Iter6: 1.68, 0, 0
+Design implemented: Ibex at Asap7node <br />
+Clock period: 1400ps (714.286 MHz) <br />
+Experiment 1:<br />
+Variants of Std cell enabled for Yosys: RVT and LVT<br />
+Variants of Adder and DFF used: LVT<br />
+Pre ECO:<br />
+  Power: 1.67e-2<br />
+  WNS: -115.39<br />
+  TNS: -1718.13<br />
+  Design area: 2479u^2<br />
+ After ECO:<br />
+ Number of ECO iterations: 6<br />
+      Power(10^-2W), WNS(ps), TNS(ps)<br />
+Iter1: 1.68, 49.84, 275.17<br />
+Iter2: 1.68,  18.72,  76.01<br />
+Iter3: 1.68,  15.00,  41.01<br />
+Iter4: 1.68,     5.24,   6.58<br />
+Iter5: 1.68, 2.18, 2.18<br />
+Iter6: 1.68, 0, 0<br />
   
 Experiment 2:
-Variants of Std cell enabled for Yosys: RVT, LVT and SLVT
-Variants of Adder and DFF used: LVT
-Pre ECO:
-  Power 1.82e-2
-  WNS: 149.21
-  TNS: 1752.8
-  Design area: 2479u^2
-  After ECO:
-  Number of ECO iterations: Did not converge
-      Power(10^-2W), WNS(ps), TNS(ps)
-Iter1: 1.82, 76.09,  311.75
-Iter2: 1.82,  40.78, 103.39
-Iter3: 1.82,  30.47,  41.06
-Iter4: 1.82,  29.82, 38.17
-Iter5: 1.82,  29.84, 38.25
-Experiment 3:
-Variants of Std cell enabled for Yosys: RVT, LVT and SLVT
-Variants of Adder and DFF used: RVT
-Pre ECO:
-  Power 1.78e-2
-  WNS: 73.64
-  TNS: 1566.26
-  Design area: 2479u^2
- Number of ECO iterations: 2
-      Power(10^-2W), WNS(ps), TNS(ps)
-Iter1: 1.78, 15.00, 46.77
-Iter2: 1.78,  0,      0
+Variants of Std cell enabled for Yosys: RVT, LVT and SLVT<br />
+Variants of Adder and DFF used: LVT<br />
+Pre ECO:<br />
+  Power 1.82e-2<br />
+  WNS: 149.21<br />
+  TNS: 1752.8<br />
+  Design area: 2479u^2<br />
+  After ECO:<br />
+  Number of ECO iterations: Did not converge<br />
+      Power(10^-2W), WNS(ps), TNS(ps)<br />
+Iter1: 1.82, 76.09,  311.75<br />
+Iter2: 1.82,  40.78, 103.39<br />
+Iter3: 1.82,  30.47,  41.06<br />
+Iter4: 1.82,  29.82, 38.17<br />
+Iter5: 1.82,  29.84, 38.25<br />
+Experiment 3:<br />
+Variants of Std cell enabled for Yosys: RVT, LVT and SLVT<br />
+Variants of Adder and DFF used: RVT<br />
+Pre ECO:<br />
+  Power 1.78e-2<br />
+  WNS: 73.64<br />
+  TNS: 1566.26<br />
+  Design area: 2479u^2<br />
+ Number of ECO iterations: 2<br />
+      Power(10^-2W), WNS(ps), TNS(ps)<br />
+Iter1: 1.78, 15.00, 46.77<br />
+Iter2: 1.78,  0,      0<br />
 
 
-Experiment 4:
-Variant of Std cells enabled for Yosys: RVT
-Variant of adder and DFF used: RVT
-Pre ECO:
-  Power 1.54e^-2
-  WNS: 42.78
-  TNS: 327.89
-  Design area: 2514u^2
-  Number of ECO iterations: 4
-      Power(10^-2W), WNS(ps), TNS(ps)
-Iter1: 1.54, 20.75,  60.28
-Iter2: 1.54, 10.57,  10.57
-Iter3: 1.54,  7.51,  7.51
-Iter4: 1.54,     0,      0
+Experiment 4:<br />
+Variant of Std cells enabled for Yosys: RVT<br />
+Variant of adder and DFF used: RVT<br />
+Pre ECO:<br />
+  Power 1.54e^-2<br />
+  WNS: 42.78<br />
+  TNS: 327.89<br />
+  Design area: 2514u^2<br />
+  Number of ECO iterations: 4<br />
+      Power(10^-2W), WNS(ps), TNS(ps)<br />
+Iter1: 1.54, 20.75,  60.28<br />
+Iter2: 1.54, 10.57,  10.57<br />
+Iter3: 1.54,  7.51,  7.51<br />
+Iter4: 1.54,     0,      0<br />
+
+
 ### Using higher layer for PDN stripes to have better signal routing
 For ASAP7 there are 9 metal layers and signal routing is enabled on M2-M7. The PDN is generated for M1, M2 and M5-M6. M1 and M2 are rails which are used to power the VDD and VSS pins of std cells. While M5 and M6 are the stripes at higher layer used to improve rebustness of grid to have better IR/EM profile. <br />
 Problem faced: For large design like Ibex the detail routing had longest runtime among all other tasks.
