@@ -165,6 +165,10 @@ Iter2: 1.54, 10.57,  10.57<br />
 Iter3: 1.54,  7.51,  7.51<br />
 Iter4: 1.54,     0,      0<br />
 
+**Observation**
+The worst PPA is seen in experiment 2 where all VT variant cells are allowed. There were L and SL cells which raised power consumption of chip and also due to lack of cell upsizing(swapping cell with its faster variant R->L or L->SL) opportunities ECO engine couldnt resolve all timing violation. While on other hand on Experiment 2 had the best PPA where only R cell was enabled. <br />
+Apart from experiment 2 the ECO engine was succesful in resolving all the timing violation in design with the help of L and SL cells.<br />
+From this we can conclude that it is better to be conservative when it comes to selecting VT of the std cells during synthesis stage and allow only R cells. The flow works best with that strategy. For SL and L cells it is better use them for ECO purposes only using on synthesis gives poor result. After final stage the ECO engine is effective in resolving remaining violations.<br />
 
 ### Using higher layer for PDN stripes to have better signal routing
 For ASAP7 there are 9 metal layers and signal routing is enabled on M2-M7. The PDN is generated for M1, M2 and M5-M6. M1 and M2 are rails which are used to power the VDD and VSS pins of std cells. While M5 and M6 are the stripes at higher layer used to improve rebustness of grid to have better IR/EM profile. <br />
