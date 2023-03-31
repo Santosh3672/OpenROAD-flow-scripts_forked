@@ -215,9 +215,21 @@ Last 5 iterations took long to converge a single violation because the ECO tool 
 <p align='center'>Post ECO PPA details on GUI</p>
 </p>
 
-**Performance improvement with proposed ECO engine**
-There are two ways to measure the performance improvement:
-i. In first method we will compare the highest freqeuncy where default flow had timing clean DB with that with flow including ECO. With default flow somewhere around 1760ps which is set by default (568.182MHz) the timing was clean. If we compare our flow was able to increase frequency by around 60.8%.But in this case the design power consumption was 1.2 x 10^-2, while at 1200ps with ECO the power consumption was 1.85 x 10^-2W  54% higher.
+<p float="left">
+<img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20ECO%20iter1.JPG" alt="MarineGEO circle logo" style="height: 300px; width:500px;"/>
+  <img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20ECO%20iter2.JPG" alt="MarineGEO circle logo" style="height: 300px; width:500px;"/>
+  <p align="center">ECO Iteration 1 and 2 results<p />
+</p>
+
+<p float="left">
+<img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20ECO%20iter5.JPG" alt="MarineGEO circle logo" style="height: 300px; width:500px;"/>
+  <img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20ECO%20iter10.JPG" alt="MarineGEO circle logo" style="height: 300px; width:500px;"/>
+  <p align="center">ECO Iteration 5 and 10 results<p />
+</p>
+
+**Performance improvement with proposed ECO engine** <br />
+There are two ways to measure the performance improvement:<br />
+i. In first method we will compare the highest freqeuncy where default flow had timing clean DB with that with flow including ECO. With default flow somewhere around 1760ps which is set by default (568.182MHz) the timing was clean. If we compare our flow was able to increase frequency by around 60.8%.But in this case the design power consumption was 1.2 x 10^-2, while at 1200ps with ECO the power consumption was 1.85 x 10^-2W  54% higher.<br />
 ii.To normalize other parameters as well we can compare frequency of ECO-based flow with default flow. With ECO we were able to meet 1200ps time period (833.333MHz) with default we have WNS of 171.4ps or it is timing clean at 1200+171.4 = 1371.4ps ~ frequency of 729.18MHz the design is timing clean. All other parameters like area and power are very close in this comparision. In this method the ECO based flow had 14.3% higher frequency.<br />
 
 So, in terms of the ability of the ECO flow to raise frequency it has increase frequency of design by 60.8% with 54% higher power consumption. If we normalise other parameters also the floe is able to increase frequency of the design by 14.3%. <br />
