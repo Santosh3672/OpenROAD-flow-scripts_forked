@@ -67,7 +67,7 @@
 # DESIGN_CONFIG=./designs/sky130hs/riscv32i/config.mk
 
 # DESIGN_CONFIG=./designs/asap7/gcd/config.mk
-# DESIGN_CONFIG=./designs/asap7/ibex/config.mk
+DESIGN_CONFIG=./designs/asap7/ibex/config.mk
 # DESIGN_CONFIG=./designs/asap7/aes/config.mk
 # DESIGN_CONFIG=./designs/asap7/jpeg/config.mk
 # DESIGN_CONFIG=./designs/asap7/ethmac/config.mk
@@ -146,6 +146,7 @@ endif
 
 $(info [INFO][FLOW] Using platform directory $(PLATFORM_DIR))
 include $(PLATFORM_DIR)/config.mk
+
 
 export GALLERY_REPORT ?= 0
 # Enables hierarchical yosys
@@ -628,6 +629,7 @@ klayout_guides: $(RESULTS_DIR)/5_route.def $(OBJECTS_DIR)/klayout.lyt
 	        -rd tech_file=$(OBJECTS_DIR)/klayout.lyt \
 	        -rm $(UTILS_DIR)/viewGuide.py
 
+
 # ==============================================================================
 #  _____ ___ _   _ ___ ____  _   _ ___ _   _  ____
 # |  ___|_ _| \ | |_ _/ ___|| | | |_ _| \ | |/ ___|
@@ -641,7 +643,7 @@ finish: $(LOG_DIR)/6_report.log \
         $(RESULTS_DIR)/6_final.sdc \
         $(GDS_FINAL_FILE)
 	@printf "%-25s %10s\n" Log "Elapsed seconds"
-	-@$(UTILS_DIR)/genElapsedTime.py -d "$(LOG_DIR)"
+	@grep Elapsed $(abspath $(LOG_DIR))/*.log | awk 'match($$0, /[a-zA-Z_0-9/]+\/([a-zA-Z_0-9]+)\.log:Elapsed time: ([0-9]+:)?([0-9]+):([0-9]+)/ , arr) { printf "%-25s %10d\n", arr[1], arr[2]*3600 + arr[3] * 60 + arr[4] }'
 
 # ==============================================================================
 
@@ -740,6 +742,55 @@ clean_finish:
 	rm -f  $(LOG_DIR)/6_*
 
 
+# ECO task 
+# ==============================================================================
+#  ____      _____      _____
+# |  __|    / ____|    / ___ \
+# | |__    | |        | |   | |
+# |  __|   | |        | |   | |
+# | |__    | |____    | |___| |
+# |____|    \_____|    \_____/
+# ==============================================================================
+
+
+eco:    $(RESULTS_DIR)/7_eco.odb \
+      	$(RESULTS_DIR)/7_eco.sdc
+# Following command enables high speed cells (SLVT or LVT) from the merged.lib generated earlier. This new library will be used during ECO.
+$(OBJECTS_DIR)/lib/merged_eco.lib:
+	$(UTILS_DIR)/enable_eco_lib.py -p "$(ENABLE_ECO_CELL)" -i $(OBJECTS_DIR)/lib/merged.lib -o $(OBJECTS_DIR)/lib/merged_eco.lib
+# Taks to read final .v and .def and generate timing timing information by reading spef file.
+$(RESULTS_DIR)/7_1_eco.odb: $(OBJECTS_DIR)/lib/merged_eco.lib $(RESULTS_DIR)/6_final.odb 
+	($(TIME_CMD) $(OPENROAD_CMD) $(SCRIPTS_DIR)/eco.tcl -metrics $(LOG_DIR)/7_1_eco.json) 2>&1 | tee $(LOG_DIR)/7_1_eco.log
+# Following task parses the timing information from 7_1_eco.log file and performs ECO on the 
+# verilog and def file from 6_final task and dumps the new netlist 7_eco.v and .def file
+$(RESULTS_DIR)/7_eco.v: $(LOG_DIR)/7_1_eco.log
+	$(UTILS_DIR)/timing_eco.py -l $(LOG_DIR)/7_1_eco.log -v $(RESULTS_DIR)/6_final.v -d $(RESULTS_DIR)/6_final.def -r $(RESULTS_DIR)
+# ECO changed .v and .def file are read in this task where all the timing and power data can be viewed.
+$(RESULTS_DIR)/7_2_eco.odb: $(OBJECTS_DIR)/lib/merged_eco.lib $(RESULTS_DIR)/7_1_eco.odb $(RESULTS_DIR)/7_eco.v
+	($(TIME_CMD) $(OPENROAD_CMD) $(SCRIPTS_DIR)/eco_view.tcl -metrics $(LOG_DIR)/7_2_eco.json) 2>&1 | tee $(LOG_DIR)/7_2_eco.log
+
+
+$(RESULTS_DIR)/7_eco.odb: $(RESULTS_DIR)/7_2_eco.odb
+	cp $< $@
+
+$(RESULTS_DIR)/7_eco.sdc: $(RESULTS_DIR)/6_final.sdc
+	cp $< $@
+
+clean_eco:
+	rm -f $(RESULTS_DIR)/7_*eco*.odb $(RESULTS_DIR)/7_eco.sdc 
+	rm -f $(LOG_DIR)/7_*
+# Use this to save .v and .def file of 6_final task, for iterative ECO cycles those files will be replaced with the ECO files.
+copy_final:
+	cp $(RESULTS_DIR)/6_final.v $(RESULTS_DIR)/6_final_pre_eco.v 
+	cp $(RESULTS_DIR)/6_final.def $(RESULTS_DIR)/6_final_pre_eco.def
+# Use this to copy result of ECO with the result of final so that a new iteration of ECO can be started after clean_eco.
+save_eco: 
+	cp $(RESULTS_DIR)/7_eco.v $(RESULTS_DIR)/6_final.v
+	cp $(RESULTS_DIR)/7_eco.def $(RESULTS_DIR)/6_final.def
+
+eco_iter: save_eco clean_eco eco
+	echo "Running another iteration of ECO ths will replace 6_final.v and .def with 7_eco.v and def respectively and perform ECO on that"
+
 # ==============================================================================
 #  __  __ ___ ____   ____
 # |  \/  |_ _/ ___| / ___|
@@ -760,7 +811,7 @@ clean:
 	@echo "  clean_synth clean_floorplan clean_place clean_cts clean_route clean_finish"
 	@echo
 
-clean_all: clean_synth clean_floorplan clean_place clean_cts clean_route clean_finish clean_metadata
+clean_all: clean_synth clean_floorplan clean_place clean_cts clean_route clean_finish clean_eco clean_metadata
 	rm -rf $(OBJECTS_DIR)
 
 nuke: clean_test clean_issues
@@ -784,7 +835,7 @@ gui_place: gui_3_place.odb
 gui_cts: gui_4_cts.odb
 gui_route: gui_5_route.odb
 gui_final: gui_6_final.odb
-
+gui_eco: gui_7_2_eco.odb
 $(foreach file,$(RESULTS_DEF),gui_$(file)): gui_%:
 	DEF_FILE=$(RESULTS_DIR)/$* $(OPENROAD_GUI_CMD) $(SCRIPTS_DIR)/gui.tcl
 

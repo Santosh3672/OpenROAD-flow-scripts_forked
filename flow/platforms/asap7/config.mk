@@ -17,7 +17,7 @@ export BC_LIB_FILES            = $(PLATFORM_DIR)/lib/asap7sc7p5t_AO_RVT_FF_nldm_
 				 $(PLATFORM_DIR)/lib/asap7sc7p5t_SEQ_RVT_FF_nldm_220123.lib \
 				 $(ADDITIONAL_LIBS)
 
-export BC_DFF_LIB_FILE        = $(PLATFORM_DIR)/lib/asap7sc7p5t_SEQ_RVT_FF_nldm_220123.lib
+export BC_DFF_LIB_FILE        ?= $(PLATFORM_DIR)/lib/asap7sc7p5t_SEQ_RVT_FF_nldm_220123.lib
 
 export WC_LIB_FILES           = $(PLATFORM_DIR)/lib/asap7sc7p5t_AO_RVT_SS_nldm_211120.lib.gz \
 				$(PLATFORM_DIR)/lib/asap7sc7p5t_INVBUF_RVT_SS_nldm_220122.lib.gz \
@@ -47,12 +47,13 @@ export WC_VOLTAGE          = 0.63
 
 # Dont use cells to ease congestion
 # Specify at least one filler cell if none
-export DONT_USE_CELLS          = *x1p*_ASAP7* *xp*_ASAP7*
-export DONT_USE_CELLS          += SDF* ICG* DFFH*
+#export DONT_USE_CELLS          = *x1p*_ASAP7* *xp*_ASAP7*
+#export DONT_USE_CELLS          += SDF* ICG* DFFH*
 #export DONT_USE_CELLS          += SDF* DFFH*
 
+export DONT_USE_CELLS 		?= *x1p*_ASAP7* *xp*_ASAP7* SDF* ICG* DFFH* *_SL *_L
 # Yosys mapping files
-export LATCH_MAP_FILE          = $(PLATFORM_DIR)/yoSys/cells_latch_R.v
+export LATCH_MAP_FILE         ?= $(PLATFORM_DIR)/yoSys/cells_latch_R.v
 export CLKGATE_MAP_FILE        = $(PLATFORM_DIR)/yoSys/cells_clkgate_R.v
 export ADDER_MAP_FILE         ?= $(PLATFORM_DIR)/yoSys/cells_adders_R.v
 
@@ -151,7 +152,7 @@ ifeq ($(ASAP7_USELVT), 1)
    export CLKGATE_MAP_FILE        = $(PLATFORM_DIR)/yoSys/cells_clkgate_L.v
    export ADDER_MAP_FILE         ?= $(PLATFORM_DIR)/yoSys/cells_adders_L.v
    
-   export BC_DFF_LIB_FILE         = $(PLATFORM_DIR)/lib/asap7sc7p5t_SEQ_LVT_FF_nldm_220123.lib
+   export BC_DFF_LIB_FILE         ?= $(PLATFORM_DIR)/lib/asap7sc7p5t_SEQ_LVT_FF_nldm_220123.lib
 
    export BC_LIB_FILES            = $(PLATFORM_DIR)/lib/asap7sc7p5t_AO_LVT_FF_nldm_211120.lib.gz \
 			            $(PLATFORM_DIR)/lib/asap7sc7p5t_INVBUF_LVT_FF_nldm_220122.lib.gz \
