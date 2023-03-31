@@ -102,7 +102,7 @@ To test the effectiveness of the proposed ECO engine following experiments are p
 Design implemented: Ibex at Asap7node <br />
 Clock period: 1400ps (714.286 MHz) <br />
 Default clock period in constraint.sdc: 1760 (it was timing clean then) <br />
-Experiment 1:<br />
+**Experiment 1:**<br />
 Variants of Std cell enabled for Yosys: RVT and LVT<br />
 Variants of Adder and DFF used: LVT<br />
 Pre ECO:<br />
@@ -124,7 +124,7 @@ Pre ECO:<br />
 | 5           | 1.68          | 2.18    | 2.18    |
 | 6           | 1.68          | 0       | 0       |
   
-Experiment 2:
+**Experiment 2:**<br />
 Variants of Std cell enabled for Yosys: RVT, LVT and SLVT<br />
 Variants of Adder and DFF used: LVT<br />
 Pre ECO:<br />
@@ -145,7 +145,7 @@ Pre ECO:<br />
 | 4           | 1.82          | 29.82   | 38.17   |
 | 5           | 1.82          | 29.84   | 38.25   |
 
-Experiment 3:<br />
+**Experiment 3:**<br />
 Variants of Std cell enabled for Yosys: RVT, LVT and SLVT<br />
 Variants of Adder and DFF used: RVT<br />
 Pre ECO:<br />
@@ -164,7 +164,7 @@ Pre ECO:<br />
 | 2           | 1.78          | 0       | 0       |
 
 
-Experiment 4:<br />
+**Experiment 4:**<br />
 Variant of Std cells enabled for Yosys: RVT<br />
 Variant of adder and DFF used: RVT<br />
 Pre ECO:<br />
