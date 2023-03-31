@@ -197,6 +197,30 @@ Iter15:1.85, 0,0<br />
 
 Last 5 iterations took long to converge a single violation because the ECO tool first prioritises R to L swap before swapping L to SL. This might cause slower convergence but saves power consumption by avoiding SL cells as much as possible. In future this feature may be modified.<br />
 
+<p align="center">
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20pre%20ECO%20timing.JPG" />
+<p align='center'>Pre ECO timning status on GUI</p>
+</p>
+
+<p align="center">
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20pre%20ECO%20PPA.JPG" />
+<p align='center'>Pre ECO PPA details on GUI</p>
+</p>
+<p align="center">
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20post%20ECO%20timing.JPG" />
+<p align='center'>Post ECO timning status on GUI</p>
+</p>
+<p align="center">
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20post%20ECO%20PPA.JPG" />
+<p align='center'>Post ECO PPA details on GUI</p>
+</p>
+
+**Performance improvement with proposed ECO engine**
+There are two ways to measure the performance improvement:
+i. In first method we will compare the highest freqeuncy where default flow had timing clean DB with that with flow including ECO. With default flow somewhere around 1760ps which is set by default (568.182MHz) the timing was clean. If we compare our flow was able to increase frequency by around 60.8%.But in this case the design power consumption was 1.2 x 10^-2, while at 1200ps with ECO the power consumption was 1.85 x 10^-2W  54% higher.
+ii.To normalize other parameters as well we can compare frequency of ECO-based flow with default flow. With ECO we were able to meet 1200ps time period (833.333MHz) with default we have WNS of 171.4ps or it is timing clean at 1200+171.4 = 1371.4ps ~ frequency of 729.18MHz the design is timing clean. All other parameters like area and power are very close in this comparision. In this method the ECO based flow had 14.3% higher frequency.<br />
+
+So, in terms of the ability of the ECO flow to raise frequency it has increase frequency of design by 60.8% with 54% higher power consumption. If we normalise other parameters also the floe is able to increase frequency of the design by 14.3%. <br />
 ### Using higher layer for PDN stripes to have better signal routing
 For ASAP7 there are 9 metal layers and signal routing is enabled on M2-M7. The PDN is generated for M1, M2 and M5-M6. M1 and M2 are rails which are used to power the VDD and VSS pins of std cells. While M5 and M6 are the stripes at higher layer used to improve rebustness of grid to have better IR/EM profile. <br />
 Problem faced: For large design like Ibex the detail routing had longest runtime among all other tasks.
