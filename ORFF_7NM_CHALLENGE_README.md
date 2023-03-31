@@ -205,11 +205,13 @@ From this we can conclude that it is better to be conservative when it comes to 
 Till now I have tried with time period of 1200ps which is a frequency of 833.33MHz, PPA details before and after ECO are as follows:<br />
 Cells enabled during syntehsis: RVT<br />
 Time period of design: 1200ps (833.33MHz)<br />
-Pre ECO: power 1.83e-2<br />
-	 WNS: 171.4<br />
-	 TNS: 52418.75<br />
-	 Area: 2524u^2<br />
-ECO number of iteration: <br />
+Pre ECO: 
+
+| Power(10^-2W) | WNS(ps) | TNS(ps)  | Design Area(um^2) |
+| ------------- | ------- | -------- | ----------------- |
+| 1.83          | 171.4   | 52418.75 | 2524              |
+
+ECO number of iteration: 15 <br />
 Iter1: 1.83, 89.29, 14299.29<br />
 Iter2: 1.84, 52.87,  8753.23<br />
 Iter3: 1.84, 45.56,  5194.51<br />
