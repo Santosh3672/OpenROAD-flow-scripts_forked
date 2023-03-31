@@ -133,7 +133,8 @@ Pre ECO:<br />
 | ------------- | ------- | ------- | ----------------- |
 | 1.82          | 149.21  | 1752.8  | 2479              |
 
-  After ECO:<br />
+<br />
+  Post ECO:<br />
   Number of ECO iterations: Did not converge<br />
 
 | Iteration # | Power(10^-2W) | WNS(ps) | TNS(ps) |
@@ -148,30 +149,40 @@ Experiment 3:<br />
 Variants of Std cell enabled for Yosys: RVT, LVT and SLVT<br />
 Variants of Adder and DFF used: RVT<br />
 Pre ECO:<br />
-  Power 1.78e-2<br />
-  WNS: 73.64<br />
-  TNS: 1566.26<br />
-  Design area: 2479u^2<br />
+
+| Power(10^-2W) | WNS(ps) | TNS(ps) | Design Area(um^2) |
+| ------------- | ------- | ------- | ----------------- |
+| 1.78          | 73.64   | 1566.26 | 2479              |
+
+<br />
+ Post ECO:<br />
  Number of ECO iterations: 2<br />
-      Power(10^-2W), WNS(ps), TNS(ps)<br />
-Iter1: 1.78, 15.00, 46.77<br />
-Iter2: 1.78,  0,      0<br />
+ 
+| Iteration # | Power(10^-2W) | WNS(ps) | TNS(ps) |
+| ----------- | ------------- | ------- | ------- |
+| 1           | 1.78          | 15      | 46.77   |
+| 2           | 1.78          | 0       | 0       |
 
 
 Experiment 4:<br />
 Variant of Std cells enabled for Yosys: RVT<br />
 Variant of adder and DFF used: RVT<br />
 Pre ECO:<br />
-  Power 1.54e^-2<br />
-  WNS: 42.78<br />
-  TNS: 327.89<br />
-  Design area: 2514u^2<br />
-  Number of ECO iterations: 4<br />
-      Power(10^-2W), WNS(ps), TNS(ps)<br />
-Iter1: 1.54, 20.75,  60.28<br />
-Iter2: 1.54, 10.57,  10.57<br />
-Iter3: 1.54,  7.51,  7.51<br />
-Iter4: 1.54,     0,      0<br />
+
+| Power(10^-2W) | WNS(ps) | TNS(ps) | Design Area(um^2) |
+| ------------- | ------- | ------- | ----------------- |
+| 1.54          | 42.78   | 327.89  | 2514              |
+
+<br />
+ Post ECO:<br />
+ Number of ECO iterations: 4<br />
+
+| Iteration # | Power(10^-2W) | WNS(ps) | TNS(ps) |
+| ----------- | ------------- | ------- | ------- |
+| 1           | 1.54          | 20.75   | 60.28   |
+| 2           | 1.54          | 10.57   | 10.57   |
+| 3           | 1.54          | 7.51    | 7.51    |
+| 4           | 1.54          | 0       | 0       |
 
 **Observation**
 The worst PPA is seen in experiment 2 where all VT variant cells are allowed. There were L and SL cells which raised power consumption of chip and also due to lack of cell upsizing(swapping cell with its faster variant R->L or L->SL) opportunities ECO engine couldnt resolve all timing violation. While on other hand on Experiment 2 had the best PPA where only R cell was enabled. <br />
