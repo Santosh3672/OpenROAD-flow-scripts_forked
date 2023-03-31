@@ -83,15 +83,26 @@ The proposed ECO engine requires multiple iterations to resolve all timing itera
 </p>
 NOTE: For automating the task the newly generated .v and .def files are renamed to 6_final.v and .def (using make save_eco) respectively since the ECO task takes input from 6_final. To avoid loosing original 6_final files user can do 'make copy_final'. <br />
 Commands required to do a new iteration of ECO:<br />
-#use this to save 6_final.v and def file.<br />
 
 ```console
+# Following command to run the regular OpenROAD flow
+make finish
+# For running ECO first time following command is used
+make eco
+# Use following to save a copy of 6_final.v and .def files 
 copy_final
+# Replace 6_final.v and .def with new generated 7_eco.v and def files
 save_eco
+# Cleans ECO run
 clean_eco
+# startts a new iteration of ECO
 eco
 ```
 Last 3 commands are clubbed in a single command "eco_iter".<br />
+
+```console
+eco_iter: make save_eco, make clean_eco; make eco
+```
 
 <p align="center">
 <img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/ECO_iter_makefile.JPG" />
