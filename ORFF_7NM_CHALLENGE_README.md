@@ -96,6 +96,7 @@ Last 3 commands are clubbed in a single command "eco_iter".<br />
 #### Result with ECO:
 Design implemented: Ibex at Asap7node <br />
 Clock period: 1400ps (714.286 MHz) <br />
+Default clock period in constraint.sdc: 1760 (it was timing clean then) <br />
 Experiment 1:<br />
 Variants of Std cell enabled for Yosys: RVT and LVT<br />
 Variants of Adder and DFF used: LVT<br />
