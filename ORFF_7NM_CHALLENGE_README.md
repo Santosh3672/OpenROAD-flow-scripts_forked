@@ -148,16 +148,16 @@ Experiment 4:
 Variant of Std cells enabled for Yosys: RVT
 Variant of adder and DFF used: RVT
 Pre ECO:
-  Power 1.78e-2
-  WNS: 80.25
-  TNS: 1365.28
-  Design area: 2478u^2
-  Number of ECO iterations: 3
+  Power 1.54e^-2
+  WNS: 42.78
+  TNS: 327.89
+  Design area: 2514u^2
+  Number of ECO iterations: 4
       Power(10^-2W), WNS(ps), TNS(ps)
-Iter1: 1.78, 10.12,  13.55
-Iter2: 1.78,  0.96,  0.96
-Iter3: 1.65,  8.32,  18.71
-Iter4: 1.65,     0,      0
+Iter1: 1.54, 20.75,  60.28
+Iter2: 1.54, 10.57,  10.57
+Iter3: 1.54,  7.51,  7.51
+Iter4: 1.54,     0,      0
 ### Using higher layer for PDN stripes to have better signal routing
 For ASAP7 there are 9 metal layers and signal routing is enabled on M2-M7. The PDN is generated for M1, M2 and M5-M6. M1 and M2 are rails which are used to power the VDD and VSS pins of std cells. While M5 and M6 are the stripes at higher layer used to improve rebustness of grid to have better IR/EM profile. <br />
 Problem faced: For large design like Ibex the detail routing had longest runtime among all other tasks.
