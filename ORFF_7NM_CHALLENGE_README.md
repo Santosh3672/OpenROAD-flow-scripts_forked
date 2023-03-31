@@ -212,21 +212,24 @@ Pre ECO:
 | 1.83          | 171.4   | 52418.75 | 2524              |
 
 ECO number of iteration: 15 <br />
-Iter1: 1.83, 89.29, 14299.29<br />
-Iter2: 1.84, 52.87,  8753.23<br />
-Iter3: 1.84, 45.56,  5194.51<br />
-Iter4: 1.84, 31.23,  3207.58<br />
-Iter5: 1.84,21.95,   1707.65<br />
-Iter6:1.85, 16.23, 1025.56<br />
-Iter7:1.8513.98, 575.51<br />
-Iter8:1.85, 12.02, 248.48<br />
-Iter9:1.85, 10.67, 62.15<br />
-Iter10: 1.85, 8.18, 8.15<br />
-Iter11:1.85, 7.49,7.49<br />
-Iter12:1.85, 4.68, 4.68<br />
-Iter13:1.85,2.09, 2.09<br />
-Iter14:1.851.42, 1.42<br />
-Iter15:1.85, 0,0<br />
+
+| Iteration # | Power(10^-2W) | WNS(ps) | TNS(ps)  |
+| ----------- | ------------- | ------- | -------- |
+| 1           | 1.83          | 89.29   | 14299.29 |
+| 2           | 1.84          | 52.87   | 8753.23  |
+| 3           | 1.84          | 45.56   | 5194.51  |
+| 4           | 1.84          | 31.23   | 3207.58  |
+| 5           | 1.84          | 21.95   | 1707.65  |
+| 6           | 1.85          | 16.23   | 1025.56  |
+| 7           | 1.85          | 13.98   | 575.51   |
+| 8           | 1.85          | 12.02   | 248.48   |
+| 9           | 1.85          | 10.67   | 62.15    |
+| 10          | 1.85          | 8.18    | 8.15     |
+| 11          | 1.85          | 7.49    | 7.49     |
+| 12          | 1.85          | 4.68    | 4.68     |
+| 13          | 1.85          | 2.09    | 2.09     |
+| 14          | 1.85          | 1.42    | 1.42     |
+| 15          | 1.85          | 0       | 0        |
 
 Last 5 iterations took long to converge a single violation because the ECO tool first prioritises R to L swap before swapping L to SL. This might cause slower convergence but saves power consumption by avoiding SL cells as much as possible. In future this feature may be modified.<br />
 
