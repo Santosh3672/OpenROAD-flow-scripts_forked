@@ -106,11 +106,12 @@ Experiment 1:<br />
 Variants of Std cell enabled for Yosys: RVT and LVT<br />
 Variants of Adder and DFF used: LVT<br />
 Pre ECO:<br />
-| Pre ECO       |
-| ------------- |
+
 | Power(10^-2W) | WNS(ps) | TNS(ps) | Design Area(um^2) |
-| 1.67          | 115.36 | 1718.13 | 2479 |
-  Power: 1.67e-2<br />
+| ------------- | ------- | ------- | ----------------- |
+| 1.67          | 115.36  | 1718.13 | 2479              |
+ 
+ Power: 1.67e-2<br />
   WNS: -115.39<br />
   TNS: -1718.13<br />
   Design area: 2479u^2<br />
