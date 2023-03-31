@@ -200,7 +200,7 @@ Pre ECO:<br />
 The worst PPA is seen in experiment 2 where all VT variant cells are allowed. There were L and SL cells which raised power consumption of chip and also due to lack of cell upsizing(swapping cell with its faster variant R->L or L->SL) opportunities ECO engine couldnt resolve all timing violation. While on other hand on Experiment 2 had the best PPA where only R cell was enabled. <br />
 Apart from experiment 2 the ECO engine was succesful in resolving all the timing violation in design with the help of L and SL cells.<br />
 From this we can conclude that it is better to be conservative when it comes to selecting VT of the std cells during synthesis stage and allow only R cells. The flow works best with that strategy. For SL and L cells it is better use them for ECO purposes only using on synthesis gives poor result. After final stage the ECO engine is effective in resolving remaining violations.<br />
-
+Also the power of the chip after ECO didnt go up significantly for all experiments performed. This is because only cells of critical paths are upsized. This supports the the argument of only using R cells for suynthesis since overall power consumption is less there. <br /> 
 **Best frequency achievable with this approach***
 Till now I have tried with time period of 1200ps which is a frequency of 833.33MHz, PPA details before and after ECO are as follows:<br />
 Cells enabled during syntehsis: RVT<br />
@@ -232,7 +232,7 @@ ECO number of iteration: 15 <br />
 | 15          | 1.85          | 0       | 0        |
 
 Last 5 iterations took long to converge a single violation because the ECO tool first prioritises R to L swap before swapping L to SL. This might cause slower convergence but saves power consumption by avoiding SL cells as much as possible. In future this feature may be modified.<br />
-
+Here also though a significant amount of TNS and WNS was resolved it had very little effect on power consumption of the chip.  <br />
 <p align="center">
 <img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20pre%20ECO%20timing.JPG" />
 <p align='center'>Pre ECO timning status on GUI</p>
@@ -337,9 +337,9 @@ In overall the runtime reduced from 20min 25sec(1225sec) to 16min 48sec(1008sec)
 ## Conclusion
 We discussed about the OpenROAD flow, different VT variants of standard cells available for Asap7 node. Then the proposed ECO engine was introduced which works on post routed design and swaps the existing cells with its faster variants. <br />
 We also discussed about effect of using various combinations of R,L and SL cells during synthesis stage and then concluded that it is better to use R cells during synthesis and restrict the use of L and SL cells for ECO only. For which we need to include their library in the config file and use dont_use attribute on blocked cells. <br />
-With this approach the proposed ECO engine works efficiently and it is able to make our design timing clean at 1200ps time period while the default flow was able to do it at 1760ps, a frequency improvement of 60.8% is achieved while power number also increased. In terms of normalized PPA, the ECO engine increased frequency by 14.3%.<br />
+The proposed ECO engine is able to resolve timing violation in a design higher frequency and doesnt impact power significantly. I am able to achieve a frequency of 833.33MHz with 0WNS while the default flow was able to do it at 1760ps. A frequency improvement of 60.8% is achieved while power number also increased. In terms of normalized PPA, the ECO engine increased frequency by 14.3%.<br />
 
-Runtime improvement of OpenROAD was also tried by focusing on routing stage which took around 20 minutes to complete. Using higher layer for PDN routing freed routing resources for signal and clock. Further improvement was seen after the routing congestion was spread out by limiting routing resources of lower metal layer during global routing stage. With the DRC count after 0th iteration of detail routing was reduced and a runtime reduction of 18% was seen.
+Runtime improvement of OpenROAD was also tried by focusing on routing stage which took around 20 minutes to complete. Using higher layer for PDN routing freed routing resources for signal and clock. Further improvement was seen after the routing congestion was spread out by limiting routing resources of lower metal layer during global routing stage. With the DRC count after 0th iteration of detail routing was reduced and a runtime reduction of 18% was seen. <br />
 
 ## Reference
 1. Link to the repo with all scripts to run ECO and PDN/routing scripts: https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/tree/7nmcontest
