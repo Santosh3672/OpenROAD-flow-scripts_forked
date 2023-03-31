@@ -170,6 +170,33 @@ The worst PPA is seen in experiment 2 where all VT variant cells are allowed. Th
 Apart from experiment 2 the ECO engine was succesful in resolving all the timing violation in design with the help of L and SL cells.<br />
 From this we can conclude that it is better to be conservative when it comes to selecting VT of the std cells during synthesis stage and allow only R cells. The flow works best with that strategy. For SL and L cells it is better use them for ECO purposes only using on synthesis gives poor result. After final stage the ECO engine is effective in resolving remaining violations.<br />
 
+**Best frequency achievable with this approach***
+Till now I have tried with time period of 1200ps which is a frequency of 833.33MHz, PPA details before and after ECO are as follows:<br />
+Cells enabled during syntehsis: RVT<br />
+Time period of design: 1200ps (833.33MHz)<br />
+Pre ECO: power 1.83e-2<br />
+	 WNS: 171.4<br />
+	 TNS: 52418.75<br />
+	 Area: 2524u^2<br />
+ECO number of iteration: <br />
+Iter1: 1.83, 89.29, 14299.29<br />
+Iter2: 1.84, 52.87,  8753.23<br />
+Iter3: 1.84, 45.56,  5194.51<br />
+Iter4: 1.84, 31.23,  3207.58<br />
+Iter5: 1.84,21.95,   1707.65<br />
+Iter6:1.85, 16.23, 1025.56<br />
+Iter7:1.8513.98, 575.51<br />
+Iter8:1.85, 12.02, 248.48<br />
+Iter9:1.85, 10.67, 62.15<br />
+Iter10: 1.85, 8.18, 8.15<br />
+Iter11:1.85, 7.49,7.49<br />
+Iter12:1.85, 4.68, 4.68<br />
+Iter13:1.85,2.09, 2.09<br />
+Iter14:1.851.42, 1.42<br />
+Iter15:1.85, 0,0<br />
+
+Last 5 iterations took long to converge a single violation because the ECO tool first prioritises R to L swap before swapping L to SL. This might cause slower convergence but saves power consumption by avoiding SL cells as much as possible. In future this feature may be modified.<br />
+
 ### Using higher layer for PDN stripes to have better signal routing
 For ASAP7 there are 9 metal layers and signal routing is enabled on M2-M7. The PDN is generated for M1, M2 and M5-M6. M1 and M2 are rails which are used to power the VDD and VSS pins of std cells. While M5 and M6 are the stripes at higher layer used to improve rebustness of grid to have better IR/EM profile. <br />
 Problem faced: For large design like Ibex the detail routing had longest runtime among all other tasks.
