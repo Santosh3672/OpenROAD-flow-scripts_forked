@@ -111,12 +111,11 @@ Pre ECO:<br />
 | ------------- | ------- | ------- | ----------------- |
 | 1.67          | 115.36  | 1718.13 | 2479              |
  
-
  <br />
  Post ECO:<br />
  Number of ECO iterations: 6<br />
  
-| Iteration   | Power(10^-2W) | WNS(ps) | TNS(ps) |
+| Iteration # | Power(10^-2W) | WNS(ps) | TNS(ps) |
 | ----------- | ------------- | ------- | ------- |
 | 1           | 1.68          | 49.84   | 275.17  |
 | 2           | 1.68          | 18.72   | 76.01   |
@@ -129,18 +128,22 @@ Experiment 2:
 Variants of Std cell enabled for Yosys: RVT, LVT and SLVT<br />
 Variants of Adder and DFF used: LVT<br />
 Pre ECO:<br />
-  Power 1.82e-2<br />
-  WNS: 149.21<br />
-  TNS: 1752.8<br />
-  Design area: 2479u^2<br />
+
+| Power(10^-2W) | WNS(ps) | TNS(ps) | Design Area(um^2) |
+| ------------- | ------- | ------- | ----------------- |
+| 1.82          | 149.21  | 1752.8  | 2479              |
+
   After ECO:<br />
   Number of ECO iterations: Did not converge<br />
-      Power(10^-2W), WNS(ps), TNS(ps)<br />
-Iter1: 1.82, 76.09,  311.75<br />
-Iter2: 1.82,  40.78, 103.39<br />
-Iter3: 1.82,  30.47,  41.06<br />
-Iter4: 1.82,  29.82, 38.17<br />
-Iter5: 1.82,  29.84, 38.25<br />
+
+| Iteration # | Power(10^-2W) | WNS(ps) | TNS(ps) |
+| ----------- | ------------- | ------- | ------- |
+| 1           | 1.82          | 76.09   | 311.75  |
+| 2           | 1.82          | 40.78   | 103.39  |
+| 3           | 1.82          | 30.47   | 41.06   |
+| 4           | 1.82          | 29.82   | 38.17   |
+| 5           | 1.82          | 29.84   | 38.25   |
+
 Experiment 3:<br />
 Variants of Std cell enabled for Yosys: RVT, LVT and SLVT<br />
 Variants of Adder and DFF used: RVT<br />
