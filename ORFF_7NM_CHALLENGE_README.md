@@ -86,10 +86,10 @@ Commands required to do a new iteration of ECO:<br />
 #use this to save 6_final.v and def file.<br />
 
 ```console
-copy_final <br />
-save_eco <br />
-clean_eco <br />
-eco <br />
+copy_final
+save_eco
+clean_eco
+eco
 ```
 Last 3 commands are clubbed in a single command "eco_iter".<br />
 
