@@ -85,15 +85,15 @@ NOTE: For automating the task the newly generated .v and .def files are renamed 
 Commands required to do a new iteration of ECO:<br />
 
 ```console
-# Following command to run the regular OpenROAD flow
+# To run the regular OpenROAD flow
 make finish
-# For running ECO first time following command is used
+# For first ECO iteration onyl eco is used
 make eco
-# Use following to save a copy of 6_final.v and .def files 
+# To save a copy of 6_final.v and .def files 
 copy_final
-# Replace 6_final.v and .def with new generated 7_eco.v and def files
+# To replace 6_final.v and .def with new generated 7_eco.v and def files
 save_eco
-# Cleans ECO run
+# Cleans ECO files run
 clean_eco
 # startts a new iteration of ECO
 eco
