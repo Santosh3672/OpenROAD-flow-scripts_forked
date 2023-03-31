@@ -53,9 +53,9 @@ The ECO engine is pyhon based, first it parses the log file of 7_1_eco.log and s
 The script also incorporates those changes in the .v & .def file by updating them and dumps updated ones with a new name. Currently there are no command that swaps  cell in the openROAD tool, if that feature is available the ECO engine can dump a file containing list of changes that can be read by openROAD and write_def/ write_verilog command can be used to generate def and verilog files respectively. <br />
 
 Details of all the modification and steps performed for the ECO is mendioned below:<br />
-i. First all the Vt variant cells (R, L and SL) are read in merged.lib file and any cell not required(say L or SL) can be blocked by setting "dont_use: true" through DONT_USE variable in config file.<br />
-ii. For higher frequency design R and L cells are enabled, but SL cells are blocked for synthesis.<br />
-iii. L variant of Adder, Buffer and CTS buffers are used, since they have large delay. <br />
+i. First all the Vt variant cells (R, L and SL) are read in merged.lib file and any cell not required for synthesis(say L or SL) can be blocked by setting "dont_use: true" through DONT_USE variable in config file.<br />
+ii. For higher frequency design R and L cells are can be enabled, but SL cells need to be blocked for synthesis.<br />
+iii. Similarly L variant of Adder, Buffer and CTS buffers can be used, for high performance. <br />
 <p align="center">
 <img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Design_config.JPG" />
 <p align='center'>Design config snippet</p>
@@ -94,6 +94,7 @@ Last 3 commands are clubbed in a single command "eco_iter".<br />
 </p>
 
 #### Result with ECO:
+To test the effectiveness of the proposed ECO engine following experiments are performed on ibex design by changing differenc cell usage during synthesis task and performing ECO on them. <br />
 Design implemented: Ibex at Asap7node <br />
 Clock period: 1400ps (714.286 MHz) <br />
 Default clock period in constraint.sdc: 1760 (it was timing clean then) <br />
