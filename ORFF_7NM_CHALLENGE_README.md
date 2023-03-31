@@ -111,19 +111,18 @@ Pre ECO:<br />
 | ------------- | ------- | ------- | ----------------- |
 | 1.67          | 115.36  | 1718.13 | 2479              |
  
- Power: 1.67e-2<br />
-  WNS: -115.39<br />
-  TNS: -1718.13<br />
-  Design area: 2479u^2<br />
- After ECO:<br />
+
+ <br />
+ Post ECO:<br />
  Number of ECO iterations: 6<br />
-      Power(10^-2W), WNS(ps), TNS(ps)<br />
-Iter1: 1.68, 49.84, 275.17<br />
-Iter2: 1.68,  18.72,  76.01<br />
-Iter3: 1.68,  15.00,  41.01<br />
-Iter4: 1.68,     5.24,   6.58<br />
-Iter5: 1.68, 2.18, 2.18<br />
-Iter6: 1.68, 0, 0<br />
+| Iteration # | Power(10^-2W) | WNS(ps) | TNS(ps) |
+| ----------- | ------------- | ------- | ------- |
+| 1           | 1.68          | 49.84   | 275.17  |
+| 2           | 1.68          | 18.72   | 76.01   |
+| 3           | 1.68          | 15      | 41.01   |
+| 4           | 1.68          | 5.24    | 6.58    |
+| 5           | 1.68          | 2.18    | 2.18    |
+| 6           | 1.68          | 0       | 0       |
   
 Experiment 2:
 Variants of Std cell enabled for Yosys: RVT, LVT and SLVT<br />
