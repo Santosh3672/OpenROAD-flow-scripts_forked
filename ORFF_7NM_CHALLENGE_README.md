@@ -214,17 +214,31 @@ Last 5 iterations took long to converge a single violation because the ECO tool 
 <img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20post%20ECO%20PPA.JPG" />
 <p align='center'>Post ECO PPA details on GUI</p>
 </p>
+ECO iteration wise PPA snippets <br />
 
-<p float="left">
-<img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20ECO%20iter1.JPG" alt="MarineGEO circle logo" style="height: 300px; width:500px;"/>
-  <img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20ECO%20iter2.JPG" alt="MarineGEO circle logo" style="height: 300px; width:500px;"/>
-  <p align="center">ECO Iteration 1 and 2 results<p />
+<p align="center">
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20ECO%20iter1.JPG" />
+<p align='center'>ECO Iteration 1 snippet</p>
 </p>
 
-<p float="left">
-<img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20ECO%20iter5.JPG" alt="MarineGEO circle logo" style="height: 300px; width:500px;"/>
-  <img src="https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20ECO%20iter10.JPG" alt="MarineGEO circle logo" style="height: 300px; width:500px;"/>
-  <p align="center">ECO Iteration 5 and 10 results<p />
+<p align="center">
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20ECO%20iter2.JPG" />
+<p align='center'>ECO Iteration 2 snippet</p>
+</p>
+
+<p align="center">
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20ECO%20iter5.JPG" />
+<p align='center'>ECO Iteration 5 snippet</p>
+</p>
+
+<p align="center">
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20ECO%20iter10.JPG" />
+<p align='center'>ECO Iteration 10 snippet</p>
+</p>
+
+<p align="center">
+<img src = "https://github.com/Santosh3672/OpenROAD-flow-scripts_forked/blob/master/Images/ECO/Ibex%201200ps%20ECO%20iter15.JPG" />
+<p align='center'>ECO Iteration 15 snippet</p>
 </p>
 
 **Performance improvement with proposed ECO engine** <br />
